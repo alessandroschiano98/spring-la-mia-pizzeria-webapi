@@ -1,26 +1,42 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: head('Lista Pizze')"></head>
-<body class="container mt-4">
-    <h1>Lista delle pizze</h1>
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Descrizione</th>
-                <th>Prezzo</th>
-                <th>Foto</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="pizza : ${pizze}">
-                <td th:text="${pizza.nome}"></td>
-                <td th:text="${pizza.descrizione}"></td>
-                <td th:text="${pizza.prezzo} + ' €'"></td>
-                <td><img th:src="${pizza.fotoUrl}" style="max-width:100px;" /></td>
-            </tr>
-        </tbody>
-    </table>
+<head th:replace="fragments/head :: head('Pizze')"></head>
+
+<body class="container">
+    <main class="container">
+        <section class="title row">
+            <div class="col-12">
+                <h1 class="text-center">
+                    Pizze
+                </h1>
+            </div>
+        </section>
+
+    <section>
+        <table class="table table-hover" th:if="${pizze.size() > 0}">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Descrizione</th>
+                    <th scope="col">Prezzo</th>
+                    <th scope="col">Foto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="pizza : ${pizze}">
+                    <td th:text="${pizza.nome}"></td>
+                    <td th:text="${pizza.descrizione}"></td>
+                    <td th:text="${pizza.prezzo} + ' €'"></td>
+                    <td><img th:src="${pizza.fotoUrl}" style="max-width:100px;" /></td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="text-center text-primary" th:unless="${pizze.size() > 0}">
+            There are no pizza's available at this moment
+        </h2>
+    </section>
 </body>
+
 </html>

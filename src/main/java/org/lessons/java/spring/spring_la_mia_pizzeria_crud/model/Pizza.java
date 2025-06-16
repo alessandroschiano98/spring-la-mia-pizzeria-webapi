@@ -1,5 +1,6 @@
 package org.lessons.java.spring.spring_la_mia_pizzeria_crud.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
@@ -10,11 +11,18 @@ public class Pizza {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
+    @Column(name = "nome", nullable = false, length = 100)
     private String nome;
+
+    @Column(name = "descrizione", columnDefinition = "TEXT")
     private String descrizione;
+
+    @Column(name = "foto_url", length = 255)
     private String fotoUrl;
+
+    @Column(name = "prezzo", nullable = false)
     private Double prezzo;
 
     // ! COSTRUTTORI
@@ -28,7 +36,7 @@ public class Pizza {
     }
 
     // ! GETTER & SETTER
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 

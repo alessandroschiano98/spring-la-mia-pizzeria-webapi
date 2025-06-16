@@ -19,7 +19,7 @@ public class PizzaController {
 
     @GetMapping
     public String index(Model model) {
-        List<Pizza> pizze = pizzaRepository.findAll();
+        List<Pizza> pizze = pizzaRepository.findAll(); // ! QUI PRENDERO' I DATI DAL DB
         model.addAttribute("pizze", pizze);
         return "pizze/index"; 
     }
