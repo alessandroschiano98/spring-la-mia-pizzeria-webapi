@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -22,6 +23,15 @@ public class PizzaController {
         List<Pizza> pizze = pizzaRepository.findAll(); // ! QUI PRENDERO' I DATI DAL DB
         model.addAttribute("pizze", pizze);// ! oppure model.addAttribute("pizze, pizzaRepository.findAll();")
         return "pizze/index"; 
+    }
+
+       @GetMapping("/{id}")
+    public String show(@PathVariable(name = "id") Integer id, Model model){
+        //  ! Optional<Pizza> pizzaAttempt = pizzaRepository.findById(id);
+        //  ! Pizza pizza = pizzaAttempt.get();
+        Pizza pizza = pizzaRepository.findById(id).get();
+        model.addAttribute("pizza", pizza);
+        return "pizzas/show";
     }
 
 }
