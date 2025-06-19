@@ -31,7 +31,7 @@ public class PizzaController {
         //  ! Pizza pizza = pizzaAttempt.get();
         Pizza pizza = pizzaRepository.findById(id).get();
         model.addAttribute("pizza", pizza);
-        return "pizzas/show";
+        return "pizze/show";
     }
 
 }
