@@ -4,9 +4,16 @@
 <head th:replace="fragments/head :: head('Home')"></head>
 
 <body>
-   <main>
-    <center><h1>PIZZA'S HOME PAGES</h1></center>
-   </main>
+    <header>
+      <div th:replace="~{fragments/navbar :: navbar('Dallo zio Schiano Pizzeria')}"></div>
+
+    </header>
+
+    <main>
+        <div class="text-center mt-4">
+            <h1>PIZZA'S HOME PAGE</h1>
+        </div>
+    </main>
 </body>
 
 </html>
