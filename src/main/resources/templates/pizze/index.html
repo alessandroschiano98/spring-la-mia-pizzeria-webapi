@@ -4,17 +4,21 @@
 <head th:replace="~{fragments/head :: head('Gestione Pizze')}"></head>
 
 <body>
-
+    <header>
+        <div th:replace="~{fragments/navbar :: navbar('Zio Schiano Pizzeria')}"></div>
+      </header>
     <main class="container">
         <section class="upper row">
             <div class="col-12">
                 <h1 class="card-title mb-4 p-4 text-center fw-bold">
-                    GESTIONALE PIZZERIA
+                    Gestionale Pizze
                 </h1>
+                <form th:action="@{/pizze}" method="GET" class="col-12 d-flex justify-content-between">
                 <div class="buttons mb-3 d-flex px-4">
-                    <a th:href="@{/pizze/create}" class="btn btn-primary ms-auto me-5 disabled">Crea una nuova pizza</a>
+                    <a th:href="@{/pizze/create}" class="btn btn-primary ms-auto me-5">Crea una nuova pizza</a>
                 </div>
             </div>
+        </form>
         </section>
 
         <section class="row pizze">
