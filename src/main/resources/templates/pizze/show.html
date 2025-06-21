@@ -2,6 +2,12 @@
 <html lang="it" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="~{fragments/head :: head('Dettagli Pizza')}"></head>
+<body>
+  <header th:replace="~{fragments/navbar :: navbar('Zio Schiano Pizzeria')}"></header>
+  ...
+  <th:block th:replace="~{fragments/footer :: scripts}"></th:block>
+</body>
+
 
 <body>
     <main class="container">

@@ -6,19 +6,19 @@
 <body>
     <header>
         <div th:replace="~{fragments/navbar :: navbar('Zio Schiano Pizzeria')}"></div>
-      </header>
+    </header>
+
     <main class="container">
         <section class="upper row">
             <div class="col-12">
                 <h1 class="card-title mb-4 p-4 text-center fw-bold">
                     Gestionale Pizze
                 </h1>
-                <form th:action="@{/pizze}" method="GET" class="col-12 d-flex justify-content-between">
-                <div class="buttons mb-3 d-flex px-4">
-                    <a th:href="@{/pizze/create}" class="btn btn-primary ms-auto me-5">Crea una nuova pizza</a>
+
+                <div class="buttons mb-3 d-flex px-4 justify-content-end">
+                    <a th:href="@{/pizze/create}" class="btn btn-primary">Crea una nuova pizza</a>
                 </div>
             </div>
-        </form>
         </section>
 
         <section class="row pizze">
@@ -41,8 +41,8 @@
                             <td th:text="*{prezzo} + ' €'"></td>
                             <td>
                                 <a th:href="@{/pizze/{id}(id=*{id})}" class="btn btn-primary btn-sm">Dettagli</a>
-                                <a th:href="@{/pizze/{id}/modifica(id=*{id})}" class="btn btn-success btn-sm disabled">Modifica</a>
-                                <a th:href="@{/pizze/{id}/elimina(id=*{id})}" class="btn btn-warning btn-sm disabled">Elimina</a>
+                                <a th:href="@{/pizze/edit/{id}(id=*{id})}" class="btn btn-success btn-sm">Modifica</a>
+                                <a th:href="@{/pizze/{id}/delete(id=*{id})}" class="btn btn-warning btn-sm disabled">Elimina</a>
                             </td>
                         </tr>
                     </tbody>

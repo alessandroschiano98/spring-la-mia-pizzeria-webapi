@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="it">
 
-<head th:replace="~{fragments/head :: head('Pizze')}" />
+<head th:replace="~{fragments/head :: head('Modifica Pizza')}"></head>
 
 <body>
     <header>
@@ -12,7 +12,7 @@
         <section class="title row">
             <div class="col-12">
                 <h1 class="text-center fw-bold mb-3">
-                    Aggiungi una nuova pizza
+                    Modificando [[${pizza.nome}]]
                 </h1>
             </div>
         </section>
@@ -20,37 +20,39 @@
         <section class="pizze row">
             <div class="col-12 text-center">
                 <ul>
-                    <li th:each="err : ${#fields.allErrors()}" th:text="${err}">
-                    </li>
+                    <li th:each="err : ${#fields.allErrors()}" th:text="${err}"></li>
                 </ul>
             </div>
             <div class="col-12">
-                <form th:action="@{/pizze/create}" method="POST" th:object="${pizza}" id="pizza-creation-form">
+                <form th:action="@{/pizze/edit/{id}(id=${pizza.id})}" method="POST" th:object="${pizza}">
+                    <input type="hidden" th:field="*{id}" />
                     <div class="mb-3">
                         <label for="nome" class="form-label"><strong>Nome:</strong></label>
-                        <input id="nome" type="text" class="form-control mb-3" th:field="*{nome}" th:errorClass="is-invalid"  required >
+                        <input id="nome" type="text" class="form-control mb-3" th:field="*{nome}" th:errorClass="is-invalid" required>
 
-                        <div th:if="${#fields.hasErrors('nome')}" class="invalid-feedback" >
+                        <div th:if="${#fields.hasErrors('nome')}" class="invalid-feedback">
                             <ul>
                                 <li th:each="err : ${#fields.errors('nome')}" th:text="${err}"></li>
                             </ul>
                         </div>
                     </div>
+
                     <div class="mb-3">
                         <label for="descrizione" class="form-label"><strong>Descrizione:</strong></label>
-                        <input id="descrizione" type="text" class="form-control mb-3" th:field="*{descrizione}" th:errorClass="is-invalid"  required >
+                        <input id="descrizione" type="text" class="form-control mb-3" th:field="*{descrizione}" th:errorClass="is-invalid" required>
 
-                        <div th:if="${#fields.hasErrors('descrizione')}" class="invalid-feedback" >
+                        <div th:if="${#fields.hasErrors('descrizione')}" class="invalid-feedback">
                             <ul>
                                 <li th:each="err : ${#fields.errors('descrizione')}" th:text="${err}"></li>
                             </ul>
                         </div>
                     </div>
+
                     <div class="mb-3">
                         <label for="prezzo" class="form-label"><strong>Prezzo:</strong></label>
-                        <input id="prezzo" type="text" class="form-control mb-3" th:field="*{prezzo}" th:errorClass="is-invalid"  required >
+                        <input id="prezzo" type="text" class="form-control mb-3" th:field="*{prezzo}" th:errorClass="is-invalid" required>
 
-                        <div th:if="${#fields.hasErrors('prezzo')}" class="invalid-feedback" >
+                        <div th:if="${#fields.hasErrors('prezzo')}" class="invalid-feedback">
                             <ul>
                                 <li th:each="err : ${#fields.errors('prezzo')}" th:text="${err}"></li>
                             </ul>
@@ -66,11 +68,8 @@
                         </div>
                     </div>
 
-
-
-                    
                     <div class="mb-3 d-flex justify-content-between">
-                        <button type="submit" class="btn btn-primary">Conferma la nuova pizza</button>
+                        <button type="submit" class="btn btn-primary">Aggiorna pizza</button>
                         <button type="reset" class="btn btn-warning">Reset</button>
                     </div>
                 </form>
@@ -78,11 +77,7 @@
         </section>
     </main>
 
-
-
-    <th:block th:replace="~{fragments/footer :: scripts}">
-        <!-- Scripts -->
-    </th:block>
+    <th:block th:replace="~{fragments/footer :: scripts}"></th:block>
 </body>
 
 </html>
