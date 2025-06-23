@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.validation.constraints.Min;
 
 @Entity
 public class Pizza {
@@ -23,6 +24,7 @@ public class Pizza {
     private String fotoUrl;
 
     @Column(name = "prezzo", nullable = false)
+    @Min(value = 0, message = "Il prezzo deve essere superiore allo 0")
     private Double prezzo;
 
     // ! COSTRUTTORI

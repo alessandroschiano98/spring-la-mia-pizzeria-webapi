@@ -42,7 +42,41 @@
                             <td>
                                 <a th:href="@{/pizze/{id}(id=*{id})}" class="btn btn-primary btn-sm">Dettagli</a>
                                 <a th:href="@{/pizze/edit/{id}(id=*{id})}" class="btn btn-success btn-sm">Modifica</a>
-                                <a th:href="@{/pizze/{id}/delete(id=*{id})}" class="btn btn-warning btn-sm disabled">Elimina</a>
+                                <button type="button" class="d-inline btn btn-warning btn-sm" data-bs-toggle="modal"
+                                th:data-bs-target="'#delete-modal-' + *{id}">Elimina</button>
+
+
+                                <div class="modal fade" th:id="'delete-modal-' + *{id}" data-bs-backdrop="static"
+                                data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminazione di
+                                                <strong>"[[*{nome}]]"</strong></h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>
+                                               Sei sicuro di voler eliminare questa pizza?
+                                                <strong>"[[*{nome}]]"</strong>([[*{id}]]),<strong>ingredienti:</strong> <em>[[*{descrizione}]]</em>
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Chiudi</button>
+                                            <form th:action="@{|/pizze/delete/*{id}|}" method="post" class="d-inline">
+                                                <button type="submit" class="btn btn-danger btn">Cancella</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
                             </td>
                         </tr>
                     </tbody>
