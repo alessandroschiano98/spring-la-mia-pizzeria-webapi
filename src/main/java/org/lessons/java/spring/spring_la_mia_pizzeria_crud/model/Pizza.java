@@ -1,29 +1,33 @@
 package org.lessons.java.spring.spring_la_mia_pizzeria_crud.model;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
+import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "pizze")
 public class Pizza {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "nome", nullable = false, length = 100)
+    @NotEmpty(message ="Il nome non può essere vuoto o null")
     private String nome;
 
-    @Column(name = "descrizione", columnDefinition = "TEXT")
+    @Lob
     private String descrizione;
 
-    @Column(name = "foto_url", length = 255)
+   @Lob
     private String fotoUrl;
 
-    @Column(name = "prezzo", nullable = false)
+    @NotNull(message = "Il prezzo non può essere null")
     @Min(value = 0, message = "Il prezzo deve essere superiore allo 0")
     private Double prezzo;
 
