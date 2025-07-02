@@ -11,16 +11,19 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "sconti")
-public class Sconto {
+@Table(name = "offerte")
+public class Offerta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private LocalDate scontoAddDate;
+    private LocalDate offertaAddDate;
 
-    private LocalDate scontoRemoveDate;
+    private LocalDate offertaRemoveDate;
+
+    private String titolo;
+
 
     @ManyToOne
     @JoinColumn(name = "pizza_id", nullable = false)
@@ -36,20 +39,29 @@ public class Sconto {
         this.id = id;
     }
 
-    public LocalDate getScontoAddDate() {
-        return this.scontoAddDate;
+
+    public LocalDate getOffertaAddDate() {
+        return this.offertaAddDate;
     }
 
-    public void setScontoAddDate(LocalDate scontoAddDate) {
-        this.scontoAddDate = scontoAddDate;
+    public void setOffertaAddDate(LocalDate offertaAddDate) {
+        this.offertaAddDate = offertaAddDate;
     }
 
-    public LocalDate getScontoRemoveDate() {
-        return this.scontoRemoveDate;
+    public LocalDate getOffertaRemoveDate() {
+        return this.offertaRemoveDate;
     }
 
-    public void setScontoRemoveDate(LocalDate scontoRemoveDate) {
-        this.scontoRemoveDate = scontoRemoveDate;
+    public void setOffertaRemoveDate(LocalDate offertaRemoveDate) {
+        this.offertaRemoveDate = offertaRemoveDate;
+    }
+
+    public String getTitolo() {
+        return this.titolo;
+    }
+
+    public void setTitolo(String titolo) {
+        this.titolo = titolo;
     }
 
     public Pizza getPizza() {
@@ -59,5 +71,7 @@ public class Sconto {
     public void setPizza(Pizza pizza) {
         this.pizza = pizza;
     }
+
+
 
 }
