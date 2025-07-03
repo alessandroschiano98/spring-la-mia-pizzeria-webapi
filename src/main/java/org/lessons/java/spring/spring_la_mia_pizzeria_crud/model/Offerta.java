@@ -54,7 +54,7 @@ public class Offerta {
 
     public void setOffertaRemoveDate(LocalDate offertaRemoveDate) {
         this.offertaRemoveDate = offertaRemoveDate;
-    }
+    } 
 
     public String getTitolo() {
         return this.titolo;

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head th:replace="~{fragments/head :: head('Pizze')}" />
+
+<body>
+    <header>
+        <div th:replace="~{fragments/navbar :: navbar('Zio Schiano Pizzeria')}"></div>
+    </header>
+
+    <main class="container">
+        <section class="title row">
+            <div class="col-12">
+                <h1 class="text-center fw-bold mb-3">
+                    Aggiungi nuova offerta
+                </h1>
+            </div>
+        </section>
+
+        <section class="offerte row">
+            <div class="col-12 text-center">
+                <ul>
+                    <li th:each="err : ${#fields.allErrors()}" th:text="${err}">
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12">
+                <form th:action="@{/offerte/create}" method="POST" th:object="${offerta}" id="offerta-creation-form">
+                    <div class="mb-3">
+                        <label for="titolo" class="form-label"><strong>Titolo offerta:</strong></label>
+                        <input id="titolo" type="text" class="form-control mb-3" th:field="*{titolo}"
+                            th:errorClass="is-invalid" required>
+
+                        <div th:if="${#fields.hasErrors('titolo')}" class="invalid-feedback">
+                            <ul>
+                                <li th:each="err : ${#fields.errors('titolo')}" th:text="${err}"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="pizza" class="form-label"><strong>Pizza associata:</strong></label>
+                        <select id="pizza" class="form-select mb-3" th:field="*{pizza}" required>
+                            <option th:each="pizza : ${pizze}" th:value="${pizza.id}" th:text="${pizza.nome}">Pizza</option>
+                        </select>
+                    
+                        <div th:if="${#fields.hasErrors('pizza')}" class="invalid-feedback">
+                            <ul>
+                                <li th:each="err : ${#fields.errors('pizza')}" th:text="${err}"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inizio-offerta" class="form-label"><strong>Inizio offerta:</strong></label>
+                        <input id="inizio-offerta" type="date" class="form-control mb-3" th:field="*{offertaAddDate}"
+                            th:errorClass="is-invalid" required>
+                        <div th:if="${#fields.hasErrors('offertaAddDate')}" class="invalid-feedback">
+                            <ul>
+                                <li th:each="err : ${#fields.errors('offertaAddDate')}" th:text="${err}"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fine-offerta" class="form-label"><strong>Fine offerta:</strong></label>
+                        <input id="fine-offerta" type="date" class="form-control mb-3" th:field="*{offertaRemoveDate}"
+                            th:errorClass="is-invalid" required>
+
+                        <div th:if="${#fields.hasErrors('offertaRemoveDate')}" class="invalid-feedback">
+                            <ul>
+                                <li th:each="err : ${#fields.errors('offertaRemoveDate')}" th:text="${err}"></li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                    <div class="mb-3 d-flex justify-content-between">
+                        <button type="submit" class="btn btn-primary">Conferma la nuova offerta</button>
+                        <button type="reset" class="btn btn-warning">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+
+
+    <th:block th:replace="~{fragments/footer :: scripts}">
+        <!-- Scripts -->
+    </th:block>
+</body>
+
+</html>

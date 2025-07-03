@@ -12,67 +12,67 @@
         <section class="title row">
             <div class="col-12">
                 <h1 class="text-center fw-bold mb-3">
-                    Modificando [[${pizza.nome}]]
+                    Modificando [[${offerta.pizza.nome}]]
                 </h1>
             </div>
         </section>
 
-        <section class="pizze row">
+        <section class="offerte row">
             <div class="col-12 text-center">
                 <ul>
                     <li th:each="err : ${#fields.allErrors()}" th:text="${err}"></li>
                 </ul>
             </div>
             <div class="col-12">
-                <form th:action="@{/pizze/edit/{id}(id=${pizza.id})}" method="POST" th:object="${pizza}">
+                <form th:action="@{/offerte/{id}(id=${offerta.id})}" method="POST" th:object="${offerta}">
                     <input type="hidden" th:field="*{id}" />
+                
+                    <!-- ! Titolo offerta -->
                     <div class="mb-3">
-                        <label for="nome" class="form-label"><strong>Nome:</strong></label>
-                        <input id="nome" type="text" class="form-control mb-3" th:field="*{nome}" th:errorClass="is-invalid" required>
-
-                        <div th:if="${#fields.hasErrors('nome')}" class="invalid-feedback">
-                            <ul>
-                                <li th:each="err : ${#fields.errors('nome')}" th:text="${err}"></li>
-                            </ul>
+                        <label for="titolo" class="form-label"><strong>Titolo Offerta:</strong></label>
+                        <input id="titolo" type="text" class="form-control mb-3" th:field="*{titolo}" th:errorClass="is-invalid" required>
+                        <div th:if="${#fields.hasErrors('titolo')}" class="invalid-feedback">
+                            <ul><li th:each="err : ${#fields.errors('titolo')}" th:text="${err}"></li></ul>
                         </div>
                     </div>
-
+                
+                    <!-- ! Pizza associata -->
                     <div class="mb-3">
-                        <label for="descrizione" class="form-label"><strong>Descrizione:</strong></label>
-                        <input id="descrizione" type="text" class="form-control mb-3" th:field="*{descrizione}" th:errorClass="is-invalid" required>
-
-                        <div th:if="${#fields.hasErrors('descrizione')}" class="invalid-feedback">
-                            <ul>
-                                <li th:each="err : ${#fields.errors('descrizione')}" th:text="${err}"></li>
-                            </ul>
+                        <label for="pizza" class="form-label"><strong>Pizza:</strong></label>
+                        <select id="pizza" class="form-select" th:field="*{pizza}" required>
+                            <option th:each="pizza : ${pizze}" th:value="${pizza.id}" th:text="${pizza.nome}"></option>
+                        </select>
+                        <div th:if="${#fields.hasErrors('pizza')}" class="invalid-feedback">
+                            <ul><li th:each="err : ${#fields.errors('pizza')}" th:text="${err}"></li></ul>
                         </div>
                     </div>
-
+             
+                
+                    <!-- ! Inizio offerta -->
                     <div class="mb-3">
-                        <label for="prezzo" class="form-label"><strong>Prezzo:</strong></label>
-                        <input id="prezzo" type="text" class="form-control mb-3" th:field="*{prezzo}" th:errorClass="is-invalid" required>
-
-                        <div th:if="${#fields.hasErrors('prezzo')}" class="invalid-feedback">
-                            <ul>
-                                <li th:each="err : ${#fields.errors('prezzo')}" th:text="${err}"></li>
-                            </ul>
+                        <label for="offertaAddDate" class="form-label"><strong>Inizio Offerta:</strong></label>
+                        <input id="offertaAddDate" type="date" class="form-control mb-3" th:field="*{offertaAddDate}" th:errorClass="is-invalid" required>
+                        <div th:if="${#fields.hasErrors('offertaAddDate')}" class="invalid-feedback">
+                            <ul><li th:each="err : ${#fields.errors('offertaAddDate')}" th:text="${err}"></li></ul>
                         </div>
                     </div>
+                
+                    <!-- ! Fine offerta -->
                     <div class="mb-3">
-                        <label for="foto-url" class="form-label"><strong>Foto Url:</strong></label>
-                        <input id="foto-url" type="text" class="form-control mb-3" th:field="*{fotoUrl}" th:errorClass="is-invalid"  required >
-                        <div th:if="${#fields.hasErrors('fotoUrl')}" class="invalid-feedback" >
-                            <ul>
-                                <li th:each="err : ${#fields.errors('fotoUrl')}" th:text="${err}"></li>
-                            </ul>
+                        <label for="offertaRemoveDate" class="form-label"><strong>Fine Offerta:</strong></label>
+                        <input id="offertaRemoveDate" type="date" class="form-control mb-3" th:field="*{offertaRemoveDate}" th:errorClass="is-invalid" required>
+                        <div th:if="${#fields.hasErrors('offertaRemoveDate')}" class="invalid-feedback">
+                            <ul><li th:each="err : ${#fields.errors('offertaRemoveDate')}" th:text="${err}"></li></ul>
                         </div>
                     </div>
-
+                
+                    <!-- ! Pulsanti -->
                     <div class="mb-3 d-flex justify-content-between">
-                        <button type="submit" class="btn btn-primary">Aggiorna pizza</button>
+                        <button type="submit" class="btn btn-primary">Aggiorna offerta</button>
                         <button type="reset" class="btn btn-warning">Reset</button>
                     </div>
                 </form>
+                
             </div>
         </section>
     </main>
