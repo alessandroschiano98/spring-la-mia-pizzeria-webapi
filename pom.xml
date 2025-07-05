@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.lessons.java.spring</groupId>
-	<artifactId>spring-la-mia-pizzeria-crud</artifactId>
+	<artifactId>spring-la-mia-pizzeria-security</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-la-mia-pizzeria-crud</name>
+	<name>spring-la-mia-pizzeria-security</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -61,6 +61,17 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- SPRING SECURITY  -->
+         <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 			<!--  WEB-JARS  -->
