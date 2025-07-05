@@ -7,8 +7,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -19,24 +17,20 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer id; 
+    
+    @NotBlank(message = "Name cannot be null, empty or blank")
+    private String name;
 
-    @NotBlank(message = "Username cannot be null, empty or blank")
-    private String username;
+    @ManyToMany( mappedBy = "roles", fetch = FetchType.EAGER )
+    private Set<User> users;
 
-    @NotBlank(message = "Password cannot be null, empty or blank")
-    private String password;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
-
-    public Set<Role> getRoles() {
-        return this.roles;
+    public Set<User> getUsers() {
+        return this.users;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
     public Integer getId() {
@@ -47,20 +41,12 @@ public class Role {
         this.id = id;
     }
 
-    public String getUsername() {
-        return this.username;
+    public String getName() {
+        return this.name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setName(String name) {
+        this.name = name;
     }
 
 }

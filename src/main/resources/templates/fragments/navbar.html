@@ -19,6 +19,13 @@
                     </li>
                 </ul>
             </div>
+                <form th:action="@{/logout}" method="post">
+                    <div class="user-details" sec:authorize="isAuthenticated()">
+                        Logged user: <span sec:authentication="name" class="me-3"></span>
+                        Roles: <span sec:authentication="principal.authorities" class="me-3"></span>
+                    <button type="submit" class="btn btn-danger">Logout</button>
+                </form>
+            </div>
         </div>
     </nav>
 </th-block>
