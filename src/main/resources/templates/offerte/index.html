@@ -45,8 +45,8 @@
                             <td th:text="*{titolo}"></td> 
                             <td>
                                 <a th:href="@{/offerte/{id}/edit(id=*{id})}" class="btn btn-success btn-sm">Modifica</a>
-                                <form th:action="@{/offerte/delete/{id}(id=*{id})}" method="post" style="display:inline;">
-                                    <button type="submit" onclick="return confirm('Sei sicuro di voler eliminare questa offerta?')">Elimina</button>
+                                <form th:action="@{/offerte/delete/{id}(id=*{id})}"  method="post" style="display:inline;">
+                                    <button type="submit" class="d-inline btn btn-danger btn-sm" onclick="return confirm('Sei sicuro di voler eliminare questa offerta?')">Elimina</button>
                                 </form>
                         
                                 <div class="modal fade" th:id="'delete-modal-' + *{id}" data-bs-backdrop="static"
@@ -55,7 +55,7 @@
                                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                                                <h1 class="modal-title fs-5" id="  ">
                                                     Eliminazione dell'offerta di
                                                     <strong>"[[*{pizza.nome}]]"</strong> aggiunto il <strong>"[[*{offertaAddDate}]]"</strong>
                                                 </h1>
