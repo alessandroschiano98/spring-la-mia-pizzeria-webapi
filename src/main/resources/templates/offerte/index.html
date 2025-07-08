@@ -9,7 +9,8 @@
     </header>
 
     <main class="container">
-        <section class="upper row">            <div class="col-12">
+        <section class="upper row">
+            <div class="col-12">
                 <h1 class="card-title mb-4 p-4 text-center fw-bold">
                     Gestionale Offerte
                 </h1>
@@ -42,25 +43,28 @@
                             <td th:text="*{pizza.prezzo} + ' €'"></td>
                             <td th:text="*{offertaAddDate}"></td>
                             <td th:text="*{offertaRemoveDate}"></td>
-                            <td th:text="*{titolo}"></td> 
+                            <td th:text="*{titolo}"></td>
                             <td>
                                 <a th:href="@{/offerte/{id}/edit(id=*{id})}" class="btn btn-success btn-sm">Modifica</a>
-                                <form th:action="@{/offerte/delete/{id}(id=*{id})}"  method="post" style="display:inline;">
-                                    <button type="submit" class="d-inline btn btn-danger btn-sm" onclick="return confirm('Sei sicuro di voler eliminare questa offerta?')">Elimina</button>
+                                <form th:action="@{/offerte/delete/{id}(id=*{id})}" method="post"
+                                    style="display:inline;">
+                                    <button type="submit" class="d-inline btn btn-danger btn-sm"
+                                        onclick="return confirm('Sei sicuro di voler eliminare questa offerta?')">Elimina</button>
                                 </form>
-                        
+
                                 <div class="modal fade" th:id="'delete-modal-' + *{id}" data-bs-backdrop="static"
-                                     data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                     aria-hidden="true">
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                    aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h1 class="modal-title fs-5" id="  ">
                                                     Eliminazione dell'offerta di
-                                                    <strong>"[[*{pizza.nome}]]"</strong> aggiunto il <strong>"[[*{offertaAddDate}]]"</strong>
+                                                    <strong>"[[*{pizza.nome}]]"</strong> aggiunto il
+                                                    <strong>"[[*{offertaAddDate}]]"</strong>
                                                 </h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
+                                                    aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <p>
@@ -71,8 +75,9 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Chiudi</button>
-                                                <form th:action="@{/offerte/delete/{id}(id=*{id})}" method="post" class="d-inline">
+                                                    data-bs-dismiss="modal">Chiudi</button>
+                                                <form th:action="@{/offerte/delete/{id}(id=*{id})}" method="post"
+                                                    class="d-inline">
                                                     <button type="submit" class="btn btn-danger btn">Cancella</button>
                                                 </form>
                                             </div>
@@ -81,7 +86,7 @@
                                 </div>
                             </td>
                         </tr>
-                    </tbody>
+                        </tbody>
                 </table>
             </div>
         </section>
