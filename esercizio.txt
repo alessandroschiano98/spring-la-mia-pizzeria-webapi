@@ -1,3 +1,5 @@
+____________________________________________________________________________________________
+
 ESERCIZIO 1 (OFFERTE) Spring La Mia Pizzeria
 Relazioni nome repo: spring-la-mia-pizzeria-relazioni
 IMPORTANTE:
@@ -13,6 +15,7 @@ una data di fine
 un titolo
 La pagina di dettaglio della singola pizza mostrerà l’elenco delle offerte collegate e avrà un bottone “Crea nuova offerta speciale” per aggiungerne una nuova.
 
+____________________________________________________________________________________________
 
 ESERCIZIO 2 (INGREDIENTI) Spring La Mia Pizzeria Relazioni
 nome repo: spring-la-mia-pizzeria-relazioni
@@ -22,14 +25,13 @@ Ogni pizza può avere più ingredienti, e ogni ingrediente può essere collegato
 Prevediamo quindi una pagina per mostrare l’elenco di tutti gli ingredienti che utilizziamo nella nostra pizzeria che permetta anche di crearne di nuovi (e di cancellarli).
 Nella pagina di creazione (e modifica) della singola pizza dobbiamo dare la possibilità di collegare uno o più ingredienti.
 
+____________________________________________________________________________________________
 
-
-
-
-ESERCIZIO 3(LOGIN) Spring La Mia Pizzeria Security
+ESERCIZIO 3 (LOGIN) Spring La Mia Pizzeria Security
 nome repo: spring-la-mia-pizzeria-security
 IMPORTANTE:
 Ricordatevi di sganciare la vostra vecchia repository e di crearne una nuova per questo esercizio, che prosegue il lavoro della pizzeria, dove lo avevate lasciato.
+
 Ciao ragazze e ciao ragazzi, proteggiamo la nostra applicazione!
 Abbiamo sviluppato tutte le pagine per gestire la nostra pizzeria (elenco pizze, dettagli singola pizza, creazione, modifica, cancellazione, offerte speciali, ingredienti)…
 ma vogliamo che chiunque possa effettuare queste operazioni? Sicuramente no!
@@ -38,3 +40,22 @@ Creiamo le entity necessarie e popoliamo a mano i dati degli utenti nel database
 Sono previsti due ruoli : USER e ADMIN
 Gli utenti con ruolo USER possono accedere solo alla pagina index e a quella di dettaglio. Gli utenti ADMIN possono fare tutto.
 Buon lavoro!! :faccia_leggermente_sorridente:
+
+____________________________________________________________________________________________
+
+ESERCIZIO 4 (WEBAPI) Spring La Mia Pizzeria WebApi
+nome repo: spring-la-mia-pizzeria-webapi
+IMPORTANTE: Ricordatevi di sganciare la vostra vecchia repository e di crearne una nuova per questo esercizio, che prosegue il lavoro della pizzeria, dove lo avevate lasciato.
+
+Oggi vogliamo dare accesso alla nostra applicazione anche all’esterno!
+Implementiamo quindi i metodi CRUD tramite RestController.
+Diamo la possibilità di :
+ottenere la lista di pizze (dobbiamo anche poterle filtrare per titolo)
+leggere i dettagli di una singola pizza
+creare una nuova pizza
+modificare una pizza esistente
+cancellare una pizza
+Queste operazioni devono poter essere eseguite tramite PostMan,
+non preoccupiamoci quindi della parte di frontend per ora.
+
+____________________________________________________________________________________________
